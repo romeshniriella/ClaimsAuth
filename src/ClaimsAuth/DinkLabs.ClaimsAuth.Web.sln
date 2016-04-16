@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DinkLabs.ClaimsAuth.Web", "DinkLabs.ClaimsAuth.Web\DinkLabs.ClaimsAuth.Web.csproj", "{C6D61A2A-6A26-4550-A2C9-C1B7D0196A7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DinkLabs.ClaimsAuth.Web.Tests", "DinkLabs.ClaimsAuth.Web.Tests\DinkLabs.ClaimsAuth.Web.Tests.csproj", "{202ACF6C-51F3-4BFD-A5F3-403DF05C5A51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6D61A2A-6A26-4550-A2C9-C1B7D0196A7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6D61A2A-6A26-4550-A2C9-C1B7D0196A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6D61A2A-6A26-4550-A2C9-C1B7D0196A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6D61A2A-6A26-4550-A2C9-C1B7D0196A7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{202ACF6C-51F3-4BFD-A5F3-403DF05C5A51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{202ACF6C-51F3-4BFD-A5F3-403DF05C5A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{202ACF6C-51F3-4BFD-A5F3-403DF05C5A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{202ACF6C-51F3-4BFD-A5F3-403DF05C5A51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
