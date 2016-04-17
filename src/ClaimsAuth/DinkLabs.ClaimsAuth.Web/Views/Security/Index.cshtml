@@ -1,0 +1,34 @@
+﻿@model List<DinkLabs.ClaimsAuth.Web.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>Users</h2>
+
+<div class="well">
+    <a href="@Url.Action("Register", "Account")" class="btn btn-default">Add New User</a>
+    <a href="@Url.Action("Groups", "Security")" class="btn btn-primary">Manage User Groups</a>
+    <a href="@Url.Action("Resources", "Application")" class="btn btn-primary">Manage Application Resources</a>
+    <a href="@Url.Action("Global", "Permissions")" class="btn btn-primary">Manage Global Permissions</a>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>e-Mail</th>
+                <th>Confirmed?</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td><a href="#!">@user.Id</a></td>
+                    <td>@user.Email</td>
+                    <td><input type="checkbox" @(user.EmailConfirmed ? "checked" : "") disabled="disabled" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
