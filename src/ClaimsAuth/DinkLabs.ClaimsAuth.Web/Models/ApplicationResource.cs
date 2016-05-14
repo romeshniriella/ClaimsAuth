@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using DinkLabs.ClaimsAuth.Web.Helpers;
+using Microsoft.Ajax.Utilities;
 
 namespace DinkLabs.ClaimsAuth.Web.Models
 {
@@ -8,28 +11,29 @@ namespace DinkLabs.ClaimsAuth.Web.Models
 
         private List<ResourceGlobalPermission> _resourceGlobalPermissions;
         private List<ResourceRolePermission> _resourceRolePermissions;
+        public ApplicationResource()
+        {
+        }
 
-        //public ApplicationResource()
-        //{
-        //}
+        public ApplicationResource(int applicationId, string area, string controller, string action, bool post, bool api)
+        {
+            if (applicationId <= 0)
+            {
+                throw new ArgumentException("Please provide a valid application ID in configuration");
+            }
 
-        //public ApplicationResource(int applicationId, string area, string controller, string action, bool post, bool api)
-        //{
-        //    if (applicationId <= 0)
-        //    {
-        //        throw new ArgumentException("Please provide a valid application ID in configuration");
-        //    }
+            ApplicationID = applicationId;
+            Area = area;
+            Controller = controller;
+            Action = action;
+            IsGetAction = !post;
+            IsApiAction = api;
 
-        //    ApplicationID = applicationId;
-        //    Area = area;
-        //    Controller = controller;
-        //    Action = action;
-        //    IsGetAction = !post;
-        //    IsApiAction = api;
+            Description = "/" + Area.IfNotBlank(a => a + "/")
+                                + Controller.IfNotBlank(a => a + "/")
+                                + Action.IfNotBlank(a => a);
+        }
 
-        //    Description = "/" + Area.IfNotBlank(a => a + "/") + Controller.IfNotBlank(a => a + "/") +
-        //                  Action.IfNotBlank(a => a);
-        //}
 
         public int ID { get; set; } // ID (Primary key)
         public int ApplicationID { get; set; } // ApplicationID
@@ -58,29 +62,30 @@ namespace DinkLabs.ClaimsAuth.Web.Models
         }
 
         // Foreign keys
-        public virtual  Application Application { get; set; } //  FK_ApplicationResource_Application
+        public virtual Application Application { get; set; } //  FK_ApplicationResource_Application
 
-        //public override int GetHashCode()
-        //{
-        //    return Area.IfNotNull(a => a.GetHashCode())
-        //           ^ Controller.IfNotNull(a => a.GetHashCode())
-        //           ^ Action.IfNotNull(a => a.GetHashCode())
-        //           ^ IsGetAction.GetValueOrDefault().GetHashCode()
-        //           ^ IsApiAction.GetValueOrDefault().GetHashCode();
-        //}
+        public override int GetHashCode()
+        {
+            return Area.IfNotNull(a => a.GetHashCode())
+                   ^ Controller.IfNotNull(a => a.GetHashCode())
+                   ^ Action.IfNotNull(a => a.GetHashCode())
+                   ^ IsGetAction.GetValueOrDefault().GetHashCode()
+                   ^ IsApiAction.GetValueOrDefault().GetHashCode();
+        }
 
-        //public override bool Equals(object obj)
-        //{
-        //    return GetHashCode() == obj.GetHashCode();
-        //}
+        public override bool Equals(object obj)
+        {
+            return GetHashCode() == obj.GetHashCode();
+        }
 
-        //public string ToPermissionValue()
-        //{
-        //    var req = "/" + Area.IfNotBlank(a => a + "/") + Controller.IfNotBlank(a => a + "/") +
-        //              Action.IfNotBlank(a => a);
+        public string ToPermissionValue()
+        {
+            var req = "/" + Area.IfNotBlank(a => a + "/") + Controller.IfNotBlank(a => a + "/") +
+                      Action.IfNotBlank(a => a);
 
-        //    return "{0}|{1}|{2}".FormatWith(IsGetAction.GetValueOrDefault() ? "GET" : ""
-        //        , req, IsApiAction.GetValueOrDefault() ? "API" : "");
-        //}
+            return $"{(IsGetAction.GetValueOrDefault() ? "GET" : "")}" +
+                   $"|{ req}" +
+                   $"|{(IsApiAction.GetValueOrDefault() ? "API" : "")}";
+        }
     }
 }

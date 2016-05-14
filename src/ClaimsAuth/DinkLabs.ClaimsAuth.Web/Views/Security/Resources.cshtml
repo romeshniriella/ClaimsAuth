@@ -1,0 +1,29 @@
+﻿@model List<DinkLabs.ClaimsAuth.Web.Models.ApplicationResource>
+
+@{
+    ViewBag.Title = "Application Resources";
+}
+
+<h2>Application Resources</h2>
+
+<div class="well">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Resource</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var res in Model)
+            {
+                <tr>
+                    <td><a href="#!">@res.ID</a></td>
+                    <td>@string.Format("[{0}|{4}] ==> {1}/{2}/{3}", res.IsApiAction.GetValueOrDefault() ? "API" : "MVC", res.Area, res.Controller, res.Action, res.IsGetAction.GetValueOrDefault() ? "GET" : "POST/OTHER")</td>
+                    <td>@res.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

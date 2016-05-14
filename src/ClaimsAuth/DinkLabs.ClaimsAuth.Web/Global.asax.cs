@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using DinkLabs.ClaimsAuth.Web.Security;
 
 namespace DinkLabs.ClaimsAuth.Web
 {
@@ -18,6 +19,9 @@ namespace DinkLabs.ClaimsAuth.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // save resources
+            APM.SaveResources();
         }
     }
 }

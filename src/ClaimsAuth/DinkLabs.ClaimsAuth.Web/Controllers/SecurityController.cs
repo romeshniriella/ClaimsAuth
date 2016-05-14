@@ -26,7 +26,12 @@ namespace DinkLabs.ClaimsAuth.Web.Controllers
         {
             return View();
         }
-
+        public ActionResult Resources()
+        {
+            var db = new ApplicationDbContext();
+            var resources = db.ApplicationResource.ToList();
+            return View(resources);
+        }
         public ActionResult Associations()
         {
             return View();
