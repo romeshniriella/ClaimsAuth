@@ -18,6 +18,8 @@ namespace DinkLabs.ClaimsAuth.Web.Data
 
         public int Save(List<ApplicationResource> resources)
         {
+            EnsureApplicationExists();
+
             // get all existing/saved resources
             var existing = GetResources().ToList();
             // select only the ones which are new
@@ -65,6 +67,14 @@ namespace DinkLabs.ClaimsAuth.Web.Data
             }
 
             return result;
+        }
+
+        private void EnsureApplicationExists()
+        {
+            if (!_db.Application.Any(x=>x.ID == 1))
+            {
+                throw new ArgumentException("Please ensure you have one application in the Applications table with the ID = 1");
+            }
         }
 
         public int SaveResourceGlobalPermission(ResourceGlobalPermission permission)
