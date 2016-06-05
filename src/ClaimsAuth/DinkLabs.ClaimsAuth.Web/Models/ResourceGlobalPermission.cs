@@ -19,6 +19,6 @@ namespace DinkLabs.ClaimsAuth.Web.Models
 
 
         // Foreign keys
-        public virtual ApplicationResource ApplicationResource { get; set; }
+        public virtual ApplicationResource Resource { get; set; }
     }
 }

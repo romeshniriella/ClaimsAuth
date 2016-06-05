@@ -23,7 +23,7 @@ namespace DinkLabs.ClaimsAuth.Web.Security
     /// </summary>
     public class ResourceHelper
     {
-        private const string NamespacePrefix = "oklo";
+        private const string NamespacePrefix = "DinkLabs";
         private static int _appId; 
         public static int ApplicationID
         {
@@ -250,7 +250,7 @@ namespace DinkLabs.ClaimsAuth.Web.Security
                             && t.IsPublic // public controllers only
                             && t.Name.EndsWith(controllerSuffix, StringComparison.OrdinalIgnoreCase)
                             // enfore naming convention
-                            && t.Namespace.IfNotNull(n => n.ToLowerInvariant().StartsWith(NamespacePrefix))
+                            && t.Namespace.IfNotNull(n => n.StartsWith(NamespacePrefix))
                             // get only our OKLO web controllers
                             && !t.IsAbstract // no abstract controllers
                             && typeof(T).IsAssignableFrom(t)); // must implement the type we requested

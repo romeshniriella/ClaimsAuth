@@ -8,7 +8,7 @@ namespace DinkLabs.ClaimsAuth.Web.Security
 {
     /// <summary>
     /// Application Permission Manager. 
-    /// Calling APM for shorter name
+    /// Calling APM for short
     /// </summary>
     public class APM
     {
